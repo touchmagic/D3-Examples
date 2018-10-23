@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <title>D3 Simple Bar Chart</title>
     <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
     <style>
@@ -18,7 +20,7 @@
         // New dataset read from CSV
         var ratData = [];
 
-        d3.csv("rat-data.csv", function(d) {
+        d3.csv("rat-squirrel-data.csv", function(d) {
             return {
                 city: d.city, // city name
                 rats: +d.rats // force value of rats to be number (+)
@@ -29,8 +31,7 @@
             createVisualization(); // call function to create chart
         });
 
-        Write the createVisualization
-        function
+        // Write the createVisualization function
         // This will contain the script that creates the chart
         function createVisualization() {
             // Width and height of SVG
@@ -71,7 +72,16 @@
                 .attr("height", function(d) {
                     return yScale(d.rats); // Set height of using the scale
                 })
-                .attr("fill", "steelblue");
+                .attr("fill", "orange")
+                .on("mouseover", function(d) {
+                    return tooltip.style("visibility", "visible").text(d.city + ": " + d.rats);
+                })
+                .on("mousemove", function(d) {
+                    return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px").text(d.city + ": " + d.rats);
+                })
+                .on("mouseout", function(d) {
+                    return tooltip.style("visibility", "hidden");
+                });
 
             // Create y-axis
             svg.append("line")
@@ -96,12 +106,20 @@
                 .attr("class", "y label")
                 .attr("text-anchor", "end")
                 .text("No. of Rats")
-                .attr("transform", "translate(20, 20) rotate(-90)")
+                .attr("transform", "translate(20, 100) rotate(-90)")
                 .attr("font-size", "14")
                 .attr("font-family", "'Open Sans', sans-serif");
-        }; // end of function
+        };
 
-        //End of Script
+        // Create Tooltip and set it to be hidden
+        var tooltip = d3.select("body")
+            .append("div")
+            .style("position", "absolute")
+            .style("font-family", "'Open Sans', sans-serif")
+            .style("font-size", "12px")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
+        // end of function
     </script>
 </body>
 
