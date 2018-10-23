@@ -33,26 +33,9 @@
 		    .projection(projection);
 
 		var graticule = d3.geo.graticule();
-
-		d3.json("https://raw.githubusercontent.com/touchmagic/D3-Examples/master/Afghanistan/Afghanistan-Admin1geo.json", function(error, world) {
-		  	svg.append("g")
-		  		.attr("class", "land")
-				.selectAll("path")
-		  		.data([topojson.object(world, world.objects.land)])
-			    .enter().append("path")
-			    .attr("d", path);
-			svg.append("g")
-		  		.attr("class", "boundary")
-				.selectAll("boundary")
-		  		.data([topojson.object(world, world.objects.countries)])
-			    .enter().append("path")
-			    .attr("d", path);
-			svg.append("g")
-				.attr("class", "graticule")
-				.selectAll("path")
-				.data(graticule.lines)
-				.enter().append("path")
-				.attr("d", path);
+	    
+	    	d3.json("https://raw.githubusercontent.com/touchmagic/D3-Examples/master/Afghanistan/Afghanistan-Admin1geo.json", function(error, uk) {
+  			if (error) return console.error(error);
 		});
         
     </script>
