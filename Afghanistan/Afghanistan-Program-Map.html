@@ -31,11 +31,12 @@
         var path = d3.geo.path()
             .projection(projection);
         
-        d3.json("Afghanistan-Admin1.json", function(json) { // loads JSON file
+        d3.json("Afghanistan-Admin1geo.json", function(json) { // loads JSON file
 	        svg.selectAll("path") // selects path elements, will make them if they don't exist
 	            .data(json.features) // iterates over geo feature
 	            .enter() // adds feature if it doesn't exist as an element
 	            .append("path") // defines element as a path
+			console.log(d);
 	        .attr("d", path) // path generator translates geo data to SVG
 	      });
         
