@@ -36,7 +36,6 @@
 	            .data(json.features) // iterates over geo feature
 	            .enter() // adds feature if it doesn't exist as an element
 	            .append("path") // defines element as a path
-			console.log(d);
 	        .attr("d", path) // path generator translates geo data to SVG
 	      });
         
