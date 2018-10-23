@@ -34,8 +34,9 @@
 
 		var graticule = d3.geo.graticule();
 	    
-	    	d3.json("https://raw.githubusercontent.com/touchmagic/D3-Examples/master/Afghanistan/Afghanistan-Admin1geo.json", function(error, uk) {
+	    	d3.json("Afghanistan-Admin1geo.json", function(error, Afghanistan) {
   			if (error) return console.error(error);
+			console.log(Afghanistan);
 		});
         
     </script>
