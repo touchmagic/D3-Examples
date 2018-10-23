@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>I'm Learning D3</title>
+    <title>Bar Chart Example</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
         text {
@@ -18,7 +18,7 @@
         // Our D3 code will go here.
         var ratData = [];
 
-        d3.csv("Bar-Charts/rat-data.csv", function(d) {
+        d3.csv("rat-data.csv", function(d) {
             return {
                 city: d.city,
                 rats: +d.rats
