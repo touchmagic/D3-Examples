@@ -50,9 +50,6 @@ var g = svg.append("g");
 // load and display the World
 d3.json("AFG.json", function(error, topology) {
     console.log(topology);
-    g.selectAll("path")
-      .data(topojson.object(topology, topology.objects.name)
-          .geometries)
     .enter()
       .append("path")
       .attr("d", path)
