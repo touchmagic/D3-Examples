@@ -2,9 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>Afghanistan Test Map</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="ky-counties.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>    
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 <style>
     body {
@@ -52,7 +50,7 @@ var g = svg.append("g");
 d3.json("AFG.json", function(error, topology) {
     console.log(topology);
     g.selectAll("path")
-      .data(topojson.object(topology, topology.objects.countries)
+      .data(topojson.object(topology, topology.objects.name)
           .geometries)
     .enter()
       .append("path")
